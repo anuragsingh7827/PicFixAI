@@ -1,0 +1,19 @@
+.downloadButtons > button {
+    margin-top: 30px;
+    background-color: #000;
+    font-weight: 600;
+    font-size: 1.1em;
+    border: none;
+    color: #fff;
+    margin-right: -20px;
+    margin-left: 40px;
+    padding: 7px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .downloadButtons > button:hover {
+    background-color: #ebd4a1;
+    color: #000;
+    transition: .3s ease-in-out;
+  }
+  

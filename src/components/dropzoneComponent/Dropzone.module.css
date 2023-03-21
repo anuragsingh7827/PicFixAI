@@ -1,0 +1,69 @@
+.dropzone {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.toggleButton {
+  width: 200px;
+  height: 100%;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+}
+.imageCollections {
+  width: 80vw;
+  /* height: 100vh; */
+  display: flex;
+  align-items: stretch;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.originalImage {
+  flex-grow: 1;
+  width: 100%;
+  height: 100%;
+}
+.restoredImage {
+  flex-grow: 1;
+  width: 100%;
+  height: 100%;
+}
+.originalImage > img {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  margin-right: 20px;
+}
+.restoredImage > img {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  margin-left: 20px;
+}
+.compareImage {
+  padding-bottom: 50px;
+  max-width: 40%;
+}
+.buttons{
+  display: flex;
+}
+.buttons > button {
+  margin-top: 30px;
+  background-color: #000;
+  font-weight: 600;
+  font-size: 1.1em;
+  border: none;
+  color: #fff;
+  margin-right: -20px;
+  /* margin-left: 40px; */
+  padding: 7px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.buttons > button:hover {
+  background-color: #ebd4a1;
+  color: #000;
+  transition: 0.3s ease-in-out;
+}

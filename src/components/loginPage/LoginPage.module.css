@@ -1,0 +1,90 @@
+.loginPage {
+  /* position: absolute; */
+  background: rgb(100, 214, 207);
+  background: linear-gradient(
+    59deg,
+    rgba(100, 214, 207, 1) 0%,
+    rgba(242, 212, 159, 1) 100%
+  );
+}
+.contentContainer {
+  height: 90vh;
+  width: 80vw;
+  display: flex;
+  gap: 30px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.contentContainer > h1 {
+  font-weight: 700;
+  margin-bottom: 25px;
+  color: #000;
+  line-height: 70px;
+  font-size: 4em;
+  text-align: center;
+  font-family: sans-serif;
+}
+.contentContainer > p {
+  font-size: 1.3em;
+  font-weight: 400;
+  margin-bottom: 25px;
+}
+.contentContainer > button {
+  cursor: pointer;
+  background-color: #e5e7eb;
+  border: none;
+  width: 260px;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 13px;
+}
+.signInText > p {
+  font-size: 16px;
+  font-weight: 600;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+@media (max-width: 870px) {
+  .contentContainer {
+    width: 100vh;
+  }
+}
+
+@media (max-width: 768px) {
+  .contentContainer {
+    width: 100vh;
+    margin-top: 200px;
+    text-align: start;
+    padding: 0 30px;
+  }
+  .contentContainer > h1 {
+    font-size: 6em;
+    line-height: 100px;
+  }
+  .contentContainer > p {
+    margin-top: 30px;
+    font-size: 60px;
+  }
+  .signInText > p {
+    font-size: 30px;
+    font-weight: 600;
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+  .contentContainer > button {
+    cursor: pointer;
+    background-color: #e5e7eb;
+    border: none;
+    width: 360px;
+    height: 70px;
+
+    display: flex;
+    padding-left: 30px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 13px;
+  }
+}
