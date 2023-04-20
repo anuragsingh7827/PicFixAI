@@ -21,10 +21,19 @@ export default function CardContainer({ isAuthenticated, setIsAuthenticated, set
 
         }
     }
+    const handleMotionBlur=()=>{
+      
+        setOpen(false);
+        if (user) {
+            navigate('/motionblur')
+        } else {
+            navigate('/login')
+
+        }
+    }
 
     return (
         <div div className={styles.container}>
-
             <Box sx={{ display: 'flex', gap: '20px' }}>
                 <Card sx={{ maxWidth: 345 }}>
                     <CardMedia
@@ -53,12 +62,10 @@ export default function CardContainer({ isAuthenticated, setIsAuthenticated, set
                         </Typography>
                     </CardContent>
                     <CardActions>
-                        <button className={styles.cardButton}>Fix Motion Blurs</button>
+                        <button onClick={handleMotionBlur} className={styles.cardButton}>Fix Motion Blurs</button>
                     </CardActions>
                 </Card>
-
             </Box>
         </div>
-
     );
 }

@@ -2,6 +2,7 @@
   "name": "reactphoto",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://picfix.ai",
   "dependencies": {
     "@auth0/auth0-react": "^2.0.1",
     "@emotion/react": "^11.10.6",
@@ -19,6 +20,7 @@
     "react-dom": "^18.2.0",
     "react-download-link": "^2.3.0",
     "react-dropzone": "^11.2.4",
+    "react-loading-spin": "^2.1.9",
     "react-responsive-carousel": "^3.2.23",
     "react-router-dom": "^6.9.0",
     "react-scripts": "5.0.1",

@@ -1,5 +1,6 @@
 .loginPage {
-  /* position: absolute; */
+  width: 100vw;
+  /* height: 120vh; */
   background: rgb(100, 214, 207);
   background: linear-gradient(
     59deg,
@@ -8,8 +9,8 @@
   );
 }
 .contentContainer {
-  height: 90vh;
-  width: 80vw;
+  min-height: 90vh;
+  width: 100vw;
   display: flex;
   gap: 30px;
   flex-direction: column;
@@ -21,7 +22,7 @@
   margin-bottom: 25px;
   color: #000;
   line-height: 70px;
-  font-size: 4em;
+  font-size: 4rem;
   text-align: center;
   font-family: sans-serif;
 }
@@ -47,44 +48,21 @@
   padding-top: 15px;
   padding-bottom: 15px;
 }
-@media (max-width: 870px) {
-  .contentContainer {
-    width: 100vh;
-  }
-}
+
 
 @media (max-width: 768px) {
   .contentContainer {
-    width: 100vh;
-    margin-top: 200px;
-    text-align: start;
-    padding: 0 30px;
+    text-align: center;
+    padding: 50px 30px;
   }
   .contentContainer > h1 {
-    font-size: 6em;
-    line-height: 100px;
+    font-size: 2.5em;
+    line-height: 40px;
+    margin-bottom: 20px;
+    text-align: center;
   }
-  .contentContainer > p {
-    margin-top: 30px;
-    font-size: 60px;
-  }
-  .signInText > p {
-    font-size: 30px;
-    font-weight: 600;
-    padding-top: 15px;
-    padding-bottom: 15px;
-  }
-  .contentContainer > button {
-    cursor: pointer;
-    background-color: #e5e7eb;
-    border: none;
-    width: 360px;
-    height: 70px;
-
-    display: flex;
-    padding-left: 30px;
-    justify-content: center;
-    align-items: center;
-    border-radius: 13px;
+ .contentContainer > p {
+    font-size: 1em;
+    text-align: center;
   }
 }

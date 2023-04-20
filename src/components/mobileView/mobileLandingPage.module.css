@@ -1,0 +1,37 @@
+.mobileLandingPage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding:20px  20px ;
+  text-align: center;
+  background: rgb(100, 214, 207);
+  background: linear-gradient(
+    59deg,
+    rgba(100, 214, 207, 1) 0%,
+    rgba(242, 212, 159, 1) 100%
+  );
+}
+
+
+.info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  /* height: 70vh; */
+
+}
+.mobileModel {
+  /* height:160vh; */
+  gap: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  padding-top: 50px;
+}
+.container{
+  align-self: center;
+}
+

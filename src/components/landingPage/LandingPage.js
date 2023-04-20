@@ -6,12 +6,10 @@ import girlWithBluredImage from '../../assets/girlBluredImage.jpeg'
 import MotionBlurImage from '../../assets/blurry-roads.jpg'
 import RestoredMotionBlurImage from '../../assets/RestoredMotionBlurImage.png'
 import { ReactCompareSlider, ReactCompareSliderImage } from "react-compare-slider";
-import { useState } from 'react';
 import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
 import { Icon } from '@mui/material';
 
 function LandingPage({ setOpen, open }) {
-  const [hover, Sethover] = useState(false);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -24,7 +22,7 @@ function LandingPage({ setOpen, open }) {
           autoPlay={true}
           infiniteLoop={true}
           showThumbs={false}
-          transitionTime={2000}
+          transitionTime={4000}
           showIndicators={false}
           showStatus={false}
         >
@@ -38,7 +36,6 @@ function LandingPage({ setOpen, open }) {
               <ReactCompareSlider
                 changePositionOnHover={false}
                 className={styles.reactCompareSlider}
-                // style={{ width: "20em", height: "15em", borderRadius: '10px' }}
                 itemOne={<>
                   <ReactCompareSliderImage src={girlWithBluredImage} alt="Image one" />
                 </>} itemTwo={<ReactCompareSliderImage src={blurimg} alt="Image two" />} />
@@ -61,6 +58,7 @@ function LandingPage({ setOpen, open }) {
 
         </Carousel >
       </div>
+    
     </div>
   )
 }

@@ -1,0 +1,13 @@
+.motionBlur {
+    width: 100vw;
+    min-height: 90vh;
+    padding-bottom: 50px;
+    height: 200%;
+    background: rgb(100, 214, 207);
+    background: linear-gradient(
+      59deg,
+      rgba(100, 214, 207, 1) 0%,
+      rgba(242, 212, 159, 1) 100%
+    );
+  }
+  

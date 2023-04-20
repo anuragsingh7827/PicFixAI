@@ -1,40 +1,46 @@
 import styles from './Navbar.module.css'
 import * as React from 'react';
-import { Avatar } from '@mui/material';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import logo from '../../assets/PicFixAILogo.png';
+import AccountMenu from '../menu/AccountMenu';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from '@mui/material/styles';
 
 function Navbar({ open, setOpen, user, isAuthenticated, setUser, setIsAuthenticated }) {
 
+    const [dropDown, setDropDown] = React.useState(null);
+
+    const theme = useTheme();
+    const matches = useMediaQuery(theme.breakpoints.up('md'));
+
+    const handleDropdown = () => {
+        setDropDown(true)
+
+    }
     const handleClickOpen = () => {
         setOpen(true);
-    };
-    const navigate = useNavigate();
-    const logout = async () => {
-        window.open(`${process.env.REACT_APP_API_URL}/auth/logout`, '_self');
-        // const res =await fetch('http://localhost:3001/auth/logout')
-        // const newRes = await res.json();
-        setIsAuthenticated(false);
-        setUser(null);
-        navigate('/');
     };
     return (
         <div className={styles.navbar}>
             <div className={styles.logo}>
-                <Link to="/" style={{ textDecoration: 'none', color: "black" }}> <img className={styles.logo} src={logo} alt="" /></Link>
+                <Link to="/" style={{ textDecoration: 'none', color: "black" }}>
+                    <img className={styles.logo} src={logo} alt="" /></Link>
             </div>
 
             <div className={styles.buttons}>
-                {user &&
-                    <button onClick={logout}>
-                        Log Out
-                    </button>
+
+                {isAuthenticated &&
+                    <div className={styles.dropDownMenu} onClick={handleDropdown}>
+                        {
+                            <AccountMenu user={user} setIsAuthenticated={setIsAuthenticated} setUser={setUser} />
+                        }
+                    </div>
                 }
-                {isAuthenticated ? (
-                    <Avatar sx={{ marginLeft: '20px' }} alt={user.name} src={user.picture} />
-                ) : (
+                {!matches ? ''
+                    : !isAuthenticated &&
                     <button onClick={handleClickOpen} style={{ cursor: 'pointer' }}>Try Now</button>
-                )}
+
+                }
             </div>
 
         </div >

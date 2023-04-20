@@ -1,75 +1,41 @@
 // Installed by "react-uploader".
-import { Uploader } from "uploader";
 import { UploadDropzone } from "react-uploader";
-import { useEffect, useState } from 'react';
 import { ReactCompareSlider, ReactCompareSliderImage } from "react-compare-slider";
-import axios from "axios";
 import styles from "../dropzoneComponent/Dropzone.module.css";
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Switch from '@mui/material/Switch';
 import { styled } from '@mui/material/styles';
 import DownloadImage from "../downloadImage/DownloadImage";
+import LoadingSpin from "react-loading-spin";
 
+function Dropzone({ uploader, setFileUrl, fileUrl, setRestoredPhoto, restoredPhoto, showRestored, setShowRestored }) {
 
-// Initialize once (at the start of your app).
-// const uploader = Uploader({ apiKey: "public_12a1y4ACPhzb5HDn9Nzjopp6CfyB" }); // Replace "free" with your API key.
-
-const uploader = Uploader({
-    apiKey: !!process.env.PUBLIC_UPLOAD_API_KEY
-        ? process.env.PUBLIC_UPLOAD_API_KEY
-        : "free",
-});
-
-
-
-const uploaderOptions = {
-    maxFileCount: 1,
-    mimeTypes: ["image/jpeg", "image/png", "image/jpg"],
-    editor: { images: { crop: false } },
-    styles: { colors: { primary: "#000" } },
-    // Comment out this line & use 'onUpdate' instead of
-    // 'onComplete' to have the dropzone close after upload.
-    showFinishButton: false,
-
-    styles: {
-        colors: {
-            primary: "#377dff"
-        }
-    }
-}
-
-function Dropzone() {
-    const [fileUrl, setFileUrl] = useState("");
-    const [restoredPhoto, setRestoredPhoto] = useState("");
-    const [showRestored, setShowRestored] = useState(false);
-
-    console.log(restoredPhoto);
-
-
-    // download restored image by click on button
-    const handleDownloadRestoredImage = () => {
-        const link = document.createElement('a');
+    const uploaderOptions = {
+        maxFileCount: 1,
+        mimeTypes: ["image/jpeg", "image/png", "image/jpg"],
+        editor: { images: { crop: false } },
+        styles: {
+            colors: {
+                'active': '#000',
+                "error": "red",
+                "primary": "#000",
+                "shade100": "#000",
+                "shade200": "#fff",
+                "shade300": "#000",
+                "shade400": "#000", // drag and drop text
+                "shade500": "#fff",
+                "shade600": "#000",
+                "shade700": "#fff",
+                "shade800": "#fff",
+                "shade900": "#fff" //upload an image text 
+            }
+        },
+        showFinishButton: false,
 
     }
-
-
-
-
-    async function getRestoredPhoto() {
-        // const response = await axios.post('http://localhost:3001/api/image', {
-        const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/image`, {
-            fileUrl: fileUrl
-        })
-        setRestoredPhoto(response.data)
-
-    }
-    useEffect(() => {
-        if (fileUrl.length > 0) getRestoredPhoto();
-    }, [fileUrl]);
-
     const handleSwitch = (event) => {
         setShowRestored(!showRestored);
-        console.log('Switch toggled:', event.target.checked);
+        console.log('Switch toggled:', event);
     };
 
     const IOSSwitch = styled((props) => (
@@ -123,10 +89,6 @@ function Dropzone() {
             }),
         },
     }));
-
-
-
-
     return (
         <div className={styles.dropzone} >
             {restoredPhoto &&
@@ -145,43 +107,62 @@ function Dropzone() {
                     }
                 </div>
             }
+            {
+                !fileUrl && <UploadDropzone
+                    uploader={uploader}
+                    options={uploaderOptions}
+                    onUpdate={files => setFileUrl(files.map(x => x.fileUrl).join("\n"))}
+                    onComplete={files => alert(files.map(x => x.fileUrl).join("\n"))}
+                    width="700px"
+                    height="250px"
+                />
+            }
+            {
+                !showRestored &&
+                <div className={styles.imageCollections}>
 
-            {/* Dropdown */}
-            {!fileUrl && <UploadDropzone uploader={uploader}
-                Options={uploaderOptions}
-                onUpdate={files => setFileUrl(files.map(x => x.fileUrl).join("\n"))}
-                onComplete={files => alert(files.map(x => x.fileUrl).join("\n"))}
-                width="700px"
-                height="250px" />
+                    <div className={styles.originalImage}>
+                        {fileUrl && <img src={fileUrl} alt="Original Pic" style={{ borderRadius: '10px' }} />}
+                    </div>
+                    {restoredPhoto && <div className={styles.restoredImage}>
+                        <img src={restoredPhoto} alt="Restored Pic" style={{ borderRadius: '10px' }} />
+                    </div>}
+
+
+                    {fileUrl && <> {!restoredPhoto && <div className={styles.loader}>
+                        <div > <LoadingSpin primaryColor='#000' secondaryColor='rgb(93, 220, 211)' />
+                        </div>
+                    </div>
+                    }</>
+
+                    }
+
+                </div>
             }
 
-            {!showRestored && <div className={styles.imageCollections}>
-                <div className={styles.originalImage}>
-                    {fileUrl && <img src={fileUrl} alt="Original Pic" style={{ borderRadius: '10px' }} />}
+
+
+            {
+                showRestored && <div className={styles.compareImage}>
+                    {fileUrl && <ReactCompareSlider
+                        portrait={true}
+                        gutterBottom
+                        itemOne={<ReactCompareSliderImage src={fileUrl} alt="Image one" />} itemTwo={<ReactCompareSliderImage src={restoredPhoto} alt="Image two" />} style={{ width: "100%", height: "100%" }} />}
                 </div>
-                <div className={styles.restoredImage}>
-                    {restoredPhoto && <img src={restoredPhoto} alt="Restored Pic" style={{ borderRadius: '10px' }} />}
-                </div>
-            </div>}
-            {showRestored && <div className={styles.compareImage}>
-                {fileUrl && <ReactCompareSlider
-                    portrait={true}
-                    gutterBottom
-                    itemOne={<ReactCompareSliderImage src={fileUrl} alt="Image one" />} itemTwo={<ReactCompareSliderImage src={restoredPhoto} alt="Image two" />} style={{ width: "100%", height: "100%" }} />}
-            </div>}
+            }
             <div>
             </div>
-            {restoredPhoto &&
+            {
+                restoredPhoto &&
                 <div className={styles.buttons}>
                     <button onClick={() => {
                         setFileUrl("")
+                        window.location.reload();
                         setRestoredPhoto("")
+
                     }
                     }>Upload New</button>
                     <DownloadImage restoredPhoto={restoredPhoto} showRestored={showRestored} />
-
-
-
                 </div>
             }
         </div >

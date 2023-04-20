@@ -14,7 +14,7 @@
     rgba(242, 212, 159, 1) 100%
   );
   color: #000;
-  padding: 20px;
+  padding:20px 50px;
   padding-left: 50px;
   padding-right: 100px;
   display: flex;
@@ -63,3 +63,15 @@
   color: #000;
 }
 /* Responsive NavBar */
+
+@media (max-width: 768px) {
+  .logo {
+    width: 150px;
+    height: 30px;
+    border-radius: 5px;
+  }
+  .navbar{
+    padding: 20px;
+    justify-content: space-between;
+  }
+}
