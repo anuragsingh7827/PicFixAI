@@ -17,7 +17,7 @@ import MotionBlur from './components/motionBlur/MotionBlur'
 function App() {
   const [user, setUser] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const[loginGoogle,setLogginGoogle]= useState()
+  const [loginGoogle, setLogginGoogle] = useState()
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up('md'));
 
@@ -25,7 +25,7 @@ function App() {
   const getUser = async () => {
     try {
       const url = `${process.env.REACT_APP_API_URL}/auth/login/success`;
-      const response = await fetch(url, { credentials: 'include', "content-Type": "text/plain" });
+      const response = await fetch(url, { credentials: 'include', "content-Type": "text/html" });
       const data = await response.json();
       setIsAuthenticated(true);
       setUser(data.user._json);
@@ -40,7 +40,7 @@ function App() {
   return (
     <>
       <div className="App">
-        <Navbar open={open} setOpen={setOpen} user={user}   setUser={setUser} setIsAuthenticated={setIsAuthenticated} isAuthenticated={isAuthenticated} />
+        <Navbar open={open} setOpen={setOpen} user={user} setUser={setUser} setIsAuthenticated={setIsAuthenticated} isAuthenticated={isAuthenticated} />
         <DiologueBox open={open} setOpen={setOpen} user={user} setUser={setUser} setIsAuthenticated={setIsAuthenticated} />
         <Routes>
           <Route
@@ -74,7 +74,7 @@ function App() {
             !user && <Route
               exact
               path="/login"
-              element={<LoginPage  loginGoogle={loginGoogle} setLogginGoogle={setLogginGoogle}/>}
+              element={<LoginPage loginGoogle={loginGoogle} setLogginGoogle={setLogginGoogle} />}
             />
           }
           {
@@ -85,8 +85,6 @@ function App() {
             />
           }
         </Routes>
-        {/* <MobileLandingPage/>
-        <MotionBlur /> */}
       </div>
     </>
   );

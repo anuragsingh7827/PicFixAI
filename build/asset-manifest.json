@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.0ec04f32.css",
-    "main.js": "/static/js/main.a7eedd67.js",
+    "main.css": "/static/css/main.5634ed87.css",
+    "main.js": "/static/js/main.8e9ad541.js",
     "static/js/787.2f3a7ad3.chunk.js": "/static/js/787.2f3a7ad3.chunk.js",
     "static/media/banner-new.png": "/static/media/banner-new.63137a3225be0fab9a94.png",
     "static/media/RestoredMotionBlurImage.png": "/static/media/RestoredMotionBlurImage.0d1fa91e392db3cd1a32.png",
@@ -12,12 +12,12 @@
     "static/media/blurry-roads.jpg": "/static/media/blurry-roads.0f9c35e460222f27f4fc.jpg",
     "static/media/googleLogo.png": "/static/media/googleLogo.ac6b820c611cfe745356.png",
     "index.html": "/index.html",
-    "main.0ec04f32.css.map": "/static/css/main.0ec04f32.css.map",
-    "main.a7eedd67.js.map": "/static/js/main.a7eedd67.js.map",
+    "main.5634ed87.css.map": "/static/css/main.5634ed87.css.map",
+    "main.8e9ad541.js.map": "/static/js/main.8e9ad541.js.map",
     "787.2f3a7ad3.chunk.js.map": "/static/js/787.2f3a7ad3.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.0ec04f32.css",
-    "static/js/main.a7eedd67.js"
+    "static/css/main.5634ed87.css",
+    "static/js/main.8e9ad541.js"
   ]
 }
